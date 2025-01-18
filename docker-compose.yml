@@ -1,0 +1,24 @@
+services:
+  comfyui:
+    platform: linux/amd64
+    build:
+      context: .
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+    volumes:
+        - ${DATA_PATH}/models:/ComfyUI/models:bind
+        - ${DATA_PATH}/custom_nodes:/ComfyUI/custom_nodes:bind
+        - ${DATA_PATH}/output:/ComfyUI/output:bind
+        - ${DATA_PATH}/notebooks:/ComfyUI/notebooks:bind
+    ports:
+        - ${PORT:-8188}:8188
+    environment:
+        - PORT=${PORT:-8188}
+        - DATA_PATH=${DATA_PATH}
