@@ -12,8 +12,8 @@ RUN pipx install nvitop
 
 RUN git clone https://github.com/comfyanonymous/ComfyUI.git
 
-RUN groupadd -g 3000 -o ai
-RUN useradd -m -u 3000 -g ai -o -s /bin/bash ai
+RUN groupadd -g 1000 -o ai
+RUN useradd -m -u 1000 -g ai -o -s /bin/bash ai
 RUN chown -R ai:ai /ComfyUI
 
 USER ai
