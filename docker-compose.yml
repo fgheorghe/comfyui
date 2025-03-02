@@ -23,4 +23,5 @@ services:
     environment:
         - PORT=${PORT:-8188}
         - DATA_PATH=${DATA_PATH}
+        - NVIDIA_VISIBLE_DEVICES=1
     restart: always
