@@ -10,7 +10,7 @@ services:
           devices:
             - driver: nvidia
               count: all
-#              device_ids: ["1"]
+              device_ids: ["1"]
               capabilities: [gpu]
 
     volumes:
@@ -23,5 +23,5 @@ services:
     environment:
         - PORT=${PORT:-8188}
         - DATA_PATH=${DATA_PATH}
-#        - NVIDIA_VISIBLE_DEVICES=1
+        - NVIDIA_VISIBLE_DEVICES=1
     restart: always
