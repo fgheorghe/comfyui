@@ -6,7 +6,7 @@ RUN apt-get install -y software-properties-common
 RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt-get install -y htop wget curl mc git
 
-RUN apt-get install -y python3.10 python3.10-venv python3.10-dev python3-pip pipx
+RUN apt-get install -y python3.10 python3.10-venv python3.10-dev python3-pip pipx libgl1-mesa-glx nano
 
 RUN pipx install nvitop
 
@@ -22,7 +22,7 @@ WORKDIR ComfyUI
 
 RUN python3.10 -m venv venv
 
-RUN . venv/bin/activate && pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu124
+RUN . venv/bin/activate && pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu124 onnxruntime-gpu
 
 RUN . venv/bin/activate && pip install -r requirements.txt
 
