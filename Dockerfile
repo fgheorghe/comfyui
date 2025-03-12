@@ -22,7 +22,7 @@ WORKDIR ComfyUI
 
 RUN python3.10 -m venv venv
 
-RUN . venv/bin/activate && pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu124 onnxruntime-gpu
+RUN . venv/bin/activate && pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu124 onnxruntime-gpu numba
 
 RUN . venv/bin/activate && pip install -r requirements.txt
 
