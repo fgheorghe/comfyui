@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.8.0-runtime-ubuntu22.04
+FROM nvidia/cuda:12.9.0-runtime-ubuntu22.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
@@ -22,7 +22,9 @@ WORKDIR ComfyUI
 
 RUN python3.10 -m venv venv
 
-RUN . venv/bin/activate && pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu124 onnxruntime-gpu numba diffusers
+RUN . venv/bin/activate && pip install --pre torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/nightly/cu129 onnxruntime-gpu numba diffusers
+
+RUN . venv/bin/activate && pip install  opencv-contrib-python==4.8.1.78 opencv-python==4.8.1.78 opencv-python-headless==4.7.0.72
 
 RUN . venv/bin/activate && pip install -r requirements.txt
 
